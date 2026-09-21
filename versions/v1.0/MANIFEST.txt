@@ -1,0 +1,5 @@
+version=v1.0
+frozen_at=2026-09-21T20:10:05-03:00
+source=MCF Academy WhatsApp Cloud API tutorial
+index_sha256=b029b0ce2f48b842f8235274d67717b6c383c8396cddc1962b569e1115b33e92
+source_files=15

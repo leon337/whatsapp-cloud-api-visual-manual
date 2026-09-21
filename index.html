@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MCF Academy — WhatsApp Cloud API</title>
+<style>
+:root{
+  --bg:#07100d;--panel:#0c1713;--panel2:#101f19;--line:#203a30;--text:#ecfff6;--muted:#9ab7aa;
+  --green:#25D366;--green2:#79f2a5;--blue:#5ba7ff;--amber:#ffcc66;--red:#ff7a7a;--ink:#04110b;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:
+radial-gradient(circle at 80% -10%,rgba(37,211,102,.16),transparent 34%),
+linear-gradient(180deg,#06100c,#08130f 40%,#07100d);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:inherit}.shell{display:grid;grid-template-columns:280px minmax(0,1fr);min-height:100vh}
+aside{position:sticky;top:0;height:100vh;border-right:1px solid var(--line);background:rgba(5,13,10,.93);backdrop-filter:blur(16px);padding:22px 16px;overflow:auto}
+.brand{display:flex;gap:12px;align-items:center;margin-bottom:22px}.logo{width:42px;height:42px;border-radius:13px;background:var(--green);display:grid;place-items:center;color:#04220f;font-weight:900;font-size:20px;box-shadow:0 0 30px #25d36633}.brand b{display:block;font-size:14px}.brand small{color:var(--muted)}
+.progress{height:6px;border-radius:999px;background:#15261f;overflow:hidden;margin:16px 0 20px}.progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--green2));transition:.2s}
+.nav a{display:flex;gap:10px;padding:10px 11px;margin:3px 0;border-radius:10px;text-decoration:none;color:#b9cec4;font-size:13px}.nav a:hover,.nav a.active{background:#12261d;color:#fff}.num{width:22px;height:22px;border-radius:7px;border:1px solid #2f5141;display:grid;place-items:center;font-size:10px;flex:0 0 auto}
+.meta-note{margin-top:20px;padding:12px;border:1px solid #234838;border-radius:12px;background:#0c1c15;color:#a9c7b8;font-size:11px;line-height:1.5}
+main{min-width:0}.hero{padding:58px clamp(24px,5vw,72px) 36px;border-bottom:1px solid var(--line)}
+.eyebrow{display:flex;flex-wrap:wrap;gap:8px}.pill{font-size:11px;padding:6px 9px;border:1px solid #2b5542;border-radius:999px;background:#0d2018;color:#b9e9cf}.pill.green{color:#7bf1a7;border-color:#267948;background:#0b2918}
+h1{font-size:clamp(38px,6vw,74px);line-height:.96;letter-spacing:-.055em;margin:20px 0 18px;max-width:1000px}.lead{font-size:18px;line-height:1.65;color:#aac4b8;max-width:850px}.hero-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px;max-width:880px}.metric{padding:16px;border:1px solid var(--line);border-radius:14px;background:#0b1813}.metric strong{font-size:22px}.metric span{display:block;color:var(--muted);font-size:11px;margin-top:5px}
+.content{padding:20px clamp(24px,5vw,72px) 80px}.section{scroll-margin-top:20px;padding:42px 0;border-bottom:1px solid #173027}.section:last-child{border:0}.section-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:22px}.step{width:42px;height:42px;border-radius:13px;background:#10271c;border:1px solid #2d6548;color:var(--green2);display:grid;place-items:center;font-weight:800;flex:0 0 auto}.section h2{font-size:clamp(25px,3vw,38px);margin:0 0 7px;letter-spacing:-.025em}.sub{color:var(--muted);line-height:1.6;max-width:880px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{border:1px solid var(--line);background:linear-gradient(180deg,#0d1b16,#0a1511);border-radius:16px;padding:18px}.card h3{font-size:15px;margin:0 0 10px}.card p,.card li{font-size:13px;line-height:1.55;color:#aec6ba}.card ul{padding-left:18px;margin:8px 0}.callout{border-left:3px solid var(--green);background:#0d2017;padding:14px 16px;border-radius:0 12px 12px 0;color:#c5ded1;font-size:13px;line-height:1.55}.callout.warn{border-color:var(--amber);background:#211b0c}.callout.danger{border-color:var(--red);background:#231013}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:center;margin:24px 0}.node{padding:18px 12px;border:1px solid #2b5140;border-radius:14px;background:#0d1d16;text-align:center;min-height:110px;display:grid;place-items:center}.node b{font-size:13px}.node small{color:var(--muted);display:block;margin-top:5px}.arrow{text-align:center;color:var(--green);font-size:22px}
+.mock{border:1px solid #2b493d;border-radius:15px;background:#0a1410;overflow:hidden}.mock-top{display:flex;gap:6px;padding:10px;border-bottom:1px solid #20362d}.dot{width:8px;height:8px;border-radius:50%;background:#35584a}.mock-body{display:grid;grid-template-columns:130px 1fr;min-height:240px}.mock-nav{border-right:1px solid #20362d;padding:12px;font-size:11px;color:#7f9d90}.mock-nav div{padding:8px;border-radius:7px}.mock-nav .on{background:#133223;color:#d8f9e7}.mock-main{padding:18px}.fake-row{height:12px;background:#1a3128;border-radius:6px;margin:10px 0}.fake-row.short{width:50%}.fake-btn{display:inline-block;margin-top:12px;background:var(--green);color:#03210e;padding:9px 13px;border-radius:8px;font-size:11px;font-weight:800}
+.code{position:relative;border:1px solid #243c33;border-radius:14px;background:#050b08;margin:14px 0;overflow:hidden}.code-head{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-bottom:1px solid #1c3028;color:#7fa092;font-size:11px}.copy{border:1px solid #2d5142;background:#0f2019;color:#c9e4d7;border-radius:8px;padding:6px 9px;cursor:pointer;font-size:10px}.copy:hover{border-color:var(--green)}pre{margin:0;padding:16px;overflow:auto;color:#d9f9e8;font:12px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre}
+.timeline{display:flex;gap:0;align-items:center;margin:22px 0}.titem{flex:1;text-align:center;position:relative}.titem:before{content:"";position:absolute;top:15px;left:0;right:0;height:2px;background:#274739}.titem:first-child:before{left:50%}.titem:last-child:before{right:50%}.tdot{position:relative;z-index:1;width:32px;height:32px;margin:auto;border-radius:50%;display:grid;place-items:center;background:#123320;border:2px solid var(--green);font-size:11px}.titem b{display:block;font-size:11px;margin-top:9px}.titem small{color:var(--muted);font-size:10px}
+.checks{display:grid;gap:8px}.check{display:flex;gap:10px;align-items:flex-start;padding:11px;border:1px solid #203a30;border-radius:10px;background:#0b1712;cursor:pointer}.check input{accent-color:var(--green);margin-top:3px}.check span{font-size:12px;color:#bbd0c5}.source{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid #1d372c;border-radius:10px;text-decoration:none;background:#0a1611}.source:hover{border-color:#39765a}.source b{font-size:12px}.source small{display:block;color:#839f91;margin-top:3px;font-size:10px;word-break:break-word}
+.tag{display:inline-block;padding:4px 7px;border-radius:7px;font-size:9px;font-weight:700;background:#143223;color:#86efad;margin-right:5px}.tag.blue{background:#10263c;color:#8cc4ff}.tag.amber{background:#2a210e;color:#ffd37b}
+details{border:1px solid #203a30;border-radius:12px;padding:12px 14px;background:#0a1611;margin:9px 0}summary{cursor:pointer;font-weight:700;font-size:13px}details p{color:#a9c1b5;font-size:12px;line-height:1.55}
+.footer{padding:28px;color:#789688;font-size:11px;text-align:center}
+kbd{font:11px ui-monospace;background:#13241c;border:1px solid #2b4a3c;padding:2px 5px;border-radius:5px}
+@media(max-width:1000px){.shell{grid-template-columns:1fr}aside{display:none}.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}.grid3{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.grid2,.grid3,.hero-grid{grid-template-columns:1fr}.mock-body{grid-template-columns:1fr}.mock-nav{display:none}.hero{padding-top:34px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside>
+  <div class="brand"><div class="logo">W</div><div><b>MCF Academy</b><small>WhatsApp Cloud API</small></div></div>
+  <div class="progress"><i id="progressBar"></i></div>
+  <nav class="nav">
+    <a href="#mapa"><span class="num">00</span>Mapa da integração</a>
+    <a href="#prereq"><span class="num">01</span>Pré-requisitos</a>
+    <a href="#app"><span class="num">02</span>Criar App Meta</a>
+    <a href="#api"><span class="num">03</span>API Setup + IDs</a>
+    <a href="#token"><span class="num">04</span>Token seguro</a>
+    <a href="#mensagem"><span class="num">05</span>Primeira mensagem</a>
+    <a href="#webhook"><span class="num">06</span>Webhook</a>
+    <a href="#janela"><span class="num">07</span>Janela de 24h</a>
+    <a href="#templates"><span class="num">08</span>Templates</a>
+    <a href="#numero"><span class="num">09</span>Número em produção</a>
+    <a href="#deploy"><span class="num">10</span>Checklist produção</a>
+    <a href="#avancado"><span class="num">+</span>Embedded Signup</a>
+    <a href="#debug"><span class="num">!</span>Debug rápido</a>
+    <a href="#fontes"><span class="num">↗</span>Fontes oficiais</a>
+  </nav>
+  <div class="meta-note">Tutorial produzido a partir da documentação oficial da Meta consultada no <b>MESTRE · WORKSPACE</b> em 21/09/2026. Nenhum token real é usado nos exemplos.</div>
+</aside>
+
+<main>
+<header class="hero">
+  <div class="eyebrow"><span class="pill green">● CLOUD API</span><span class="pill">META FOR DEVELOPERS</span><span class="pill">VISUAL LAB</span></div>
+  <h1>WhatsApp para Desenvolvedores, do zero ao webhook.</h1>
+  <p class="lead">Um roteiro visual para entender as peças da WhatsApp Business Platform, criar um app, enviar mensagens pela Cloud API, receber eventos por webhook e preparar uma integração segura para produção.</p>
+  <div class="hero-grid">
+    <div class="metric"><strong>10</strong><span>etapas práticas</span></div>
+    <div class="metric"><strong>24h</strong><span>janela de atendimento</span></div>
+    <div class="metric"><strong>3</strong><span>permissões no token permanente</span></div>
+  </div>
+</header>
+
+<div class="content">
+<section class="section" id="mapa">
+  <div class="section-head"><div class="step">00</div><div><h2>Mapa mental da integração</h2><div class="sub">Antes de clicar em qualquer painel, entenda quem fala com quem. O seu backend não “entra no WhatsApp”; ele conversa com a Cloud API da Meta.</div></div></div>
+  <div class="flow">
+    <div class="node"><div>👤<br><b>Cliente</b><small>WhatsApp no celular</small></div></div><div class="arrow">⇄</div>
+    <div class="node"><div>☁️<br><b>WhatsApp Cloud API</b><small>infra da Meta</small></div></div><div class="arrow">⇄</div>
+    <div class="node"><div>🧠<br><b>Seu backend</b><small>Node, Python, etc.</small></div></div>
+  </div>
+  <div class="grid3">
+    <div class="card"><h3>🔐 Autenticação</h3><p>Seu backend chama a Graph API com um <b>access token</b>. Em produção, use token de system user e guarde-o como segredo.</p></div>
+    <div class="card"><h3>📤 Saída</h3><p>Mensagens saem pelo endpoint <kbd>/{PHONE_NUMBER_ID}/messages</kbd>.</p></div>
+    <div class="card"><h3>📥 Entrada</h3><p>Mensagens e status chegam no seu endpoint HTTPS via <b>webhooks</b>.</p></div>
+  </div>
+</section>
+
+<section class="section" id="prereq">
+  <div class="section-head"><div class="step">01</div><div><h2>Pré-requisitos</h2><div class="sub">O guia oficial atual pede conta Facebook ou Meta gerenciada, registro como developer e um dispositivo com WhatsApp para testes.</div></div></div>
+  <div class="grid2">
+    <div class="card"><h3>Você precisa</h3><div class="checks">
+      <label class="check"><input type="checkbox"><span>Conta Facebook ou Managed Meta Account</span></label>
+      <label class="check"><input type="checkbox"><span>Registro no Meta for Developers</span></label>
+      <label class="check"><input type="checkbox"><span>Business Portfolio</span></label>
+      <label class="check"><input type="checkbox"><span>Celular com WhatsApp para receber o teste</span></label>
+    </div></div>
+    <div class="card"><h3>Conceitos que vão aparecer</h3><p><span class="tag">WABA</span> WhatsApp Business Account</p><p><span class="tag blue">PHONE_NUMBER_ID</span> ID técnico do número usado na API</p><p><span class="tag amber">ACCESS TOKEN</span> credencial do backend</p><p><span class="tag">WEBHOOK</span> endpoint para eventos de entrada/status</p></div>
+  </div>
+</section>
+
+<section class="section" id="app">
+  <div class="section-head"><div class="step">02</div><div><h2>Criar o App Meta com o caso de uso WhatsApp</h2><div class="sub">No App Dashboard, crie um app e escolha o caso de uso <b>Connect with customers through WhatsApp</b>. Vincule um Business Portfolio.</div></div></div>
+  <div class="grid2">
+    <div class="mock">
+      <div class="mock-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      <div class="mock-body"><div class="mock-nav"><div>Overview</div><div class="on">WhatsApp</div><div>Permissions</div><div>Settings</div></div><div class="mock-main"><b>Customize use case</b><div class="fake-row"></div><div class="fake-row short"></div><div class="fake-btn">Start using the API</div></div></div>
+    </div>
+    <div class="card"><h3>Sequência visual</h3><ul><li><b>Create App</b></li><li>Nome + email</li><li>Use case do WhatsApp</li><li>Escolher/criar Business Portfolio</li><li>Confirmar e criar</li><li>Abrir <b>Quickstart → Start using the API</b></li></ul><div class="callout">Ao terminar, o Dashboard leva você para a configuração do caso de uso WhatsApp.</div></div>
+  </div>
+</section>
+
+<section class="section" id="api">
+  <div class="section-head"><div class="step">03</div><div><h2>API Setup: conecte a WABA e salve os IDs</h2><div class="sub">A API Setup conecta seu app a uma WhatsApp Business Account. É aqui que aparecem os identificadores que seu backend usará.</div></div></div>
+  <div class="grid3">
+    <div class="card"><h3>WABA ID</h3><p>Identifica a conta WhatsApp Business. Salve-o para operações administrativas e templates.</p></div>
+    <div class="card"><h3>Phone Number ID</h3><p>Identifica o número na Cloud API. É usado no endpoint de mensagens.</p></div>
+    <div class="card"><h3>Test number</h3><p>No onboarding inicial, a Meta fornece um número de teste para você validar o fluxo antes do número real.</p></div>
+  </div>
+  <div class="code"><div class="code-head"><span>.env — estrutura recomendada</span><button class="copy">COPIAR</button></div><pre>GRAPH_API_VERSION=vXX.X
+WHATSAPP_WABA_ID=...
+WHATSAPP_PHONE_NUMBER_ID=...
+WHATSAPP_ACCESS_TOKEN=...
+WHATSAPP_VERIFY_TOKEN=...
+META_APP_SECRET=...</pre></div>
+  <div class="callout warn"><b>Versão da Graph API:</b> as páginas oficiais consultadas hoje exibem exemplos com versões diferentes (v23.0 e v26.0). Use uma variável e confira a versão configurada/suportada pelo seu app em vez de copiar uma versão fixa de um tutorial.</div>
+</section>
+
+<section class="section" id="token">
+  <div class="section-head"><div class="step">04</div><div><h2>Do token temporário ao token de produção</h2><div class="sub">O token temporário serve para o primeiro teste. Para desenvolvimento contínuo/produção, o guia oficial manda criar um <b>System User</b> e gerar um token apropriado.</div></div></div>
+  <div class="grid2">
+    <div class="card"><h3>Fluxo oficial</h3><ol style="padding-left:18px;color:#aec6ba;font-size:13px;line-height:1.7"><li>Business Settings → System users</li><li>Criar system user</li><li>Assign Assets → seu app → Full control</li><li>Assign Assets → WABA → Manage WhatsApp Business accounts</li><li>Generate token</li></ol></div>
+    <div class="card"><h3>Permissões citadas no Get Started</h3><p><kbd>business_management</kbd></p><p><kbd>whatsapp_business_messaging</kbd></p><p><kbd>whatsapp_business_management</kbd></p><div class="callout danger">Nunca coloque o access token em HTML, frontend público, Git ou screenshot.</div></div>
+  </div>
+</section>
+
+<section class="section" id="mensagem">
+  <div class="section-head"><div class="step">05</div><div><h2>Enviar a primeira mensagem</h2><div class="sub">Todas as mensagens são enviadas pelo endpoint do Phone Number ID. O corpo muda conforme o tipo de mensagem.</div></div></div>
+  <div class="code"><div class="code-head"><span>cURL — mensagem de texto durante janela de atendimento</span><button class="copy">COPIAR</button></div><pre>curl "https://graph.facebook.com/${GRAPH_API_VERSION}/${WHATSAPP_PHONE_NUMBER_ID}/messages" \
+  -H "Authorization: Bearer ${WHATSAPP_ACCESS_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messaging_product": "whatsapp",
+    "recipient_type": "individual",
+    "to": "+55SEUNUMERO",
+    "type": "text",
+    "text": {
+      "body": "Olá! Mensagem enviada pela Cloud API."
+    }
+  }'</pre></div>
+  <div class="grid2">
+    <div class="callout"><b>HTTP aceito ≠ entregue.</b> A resposta da Messages API confirma que a Meta aceitou a requisição. O status real (sent, delivered, read, failed) chega pelo webhook.</div>
+    <div class="callout warn"><b>Formato do telefone:</b> a documentação recomenda incluir <b>+</b> e código do país. Isso reduz risco de entrega incorreta.</div>
+  </div>
+</section>
+
+<section class="section" id="webhook">
+  <div class="section-head"><div class="step">06</div><div><h2>Webhook: receber mensagens e status</h2><div class="sub">O webhook tem duas responsabilidades: responder à verificação inicial por GET e receber eventos por POST. Depois, assine o campo <b>messages</b>.</div></div></div>
+  <div class="timeline">
+    <div class="titem"><div class="tdot">1</div><b>Meta GET</b><small>verificação</small></div>
+    <div class="titem"><div class="tdot">2</div><b>seu token</b><small>compare</small></div>
+    <div class="titem"><div class="tdot">3</div><b>challenge</b><small>devolva</small></div>
+    <div class="titem"><div class="tdot">4</div><b>Subscribe</b><small>messages</small></div>
+    <div class="titem"><div class="tdot">5</div><b>Meta POST</b><small>eventos</small></div>
+  </div>
+  <div class="code"><div class="code-head"><span>Node.js / Express — verificação mínima</span><button class="copy">COPIAR</button></div><pre>app.get("/webhook", (req, res) => {
+  const mode = req.query["hub.mode"];
+  const token = req.query["hub.verify_token"];
+  const challenge = req.query["hub.challenge"];
+
+  if (mode === "subscribe" &&
+      token === process.env.WHATSAPP_VERIFY_TOKEN) {
+    return res.status(200).send(challenge);
+  }
+
+  return res.sendStatus(403);
+});</pre></div>
+  <div class="code"><div class="code-head"><span>Node.js — valide a assinatura antes de processar POST</span><button class="copy">COPIAR</button></div><pre>import crypto from "node:crypto";
+
+function validMetaSignature(rawBody, signature) {
+  const expected = "sha256=" + crypto
+    .createHmac("sha256", process.env.META_APP_SECRET)
+    .update(rawBody)
+    .digest("hex");
+
+  return crypto.timingSafeEqual(
+    Buffer.from(expected),
+    Buffer.from(signature || "")
+  );
+}</pre></div>
+  <div class="callout">A documentação genérica de Webhooks da Meta orienta gerar/verificar assinatura SHA-256 usando o payload e o App Secret. Capture e armazene os eventos importantes: não existe consulta histórica garantida de notificações webhook.</div>
+</section>
+
+<section class="section" id="janela">
+  <div class="section-head"><div class="step">07</div><div><h2>A regra que muda tudo: janela de 24 horas</h2><div class="sub">Quando o usuário envia mensagem ou liga, abre uma customer service window de 24h. Nova interação reinicia o relógio.</div></div></div>
+  <div class="grid2">
+    <div class="card"><h3>🟢 Dentro da janela</h3><p>Você pode enviar service messages livres: texto, mídia, contatos, listas, flows e outros tipos suportados.</p></div>
+    <div class="card"><h3>🔒 Fora da janela</h3><p>Você só pode iniciar/retomar a conversa usando <b>template previamente aprovado</b>.</p></div>
+  </div>
+  <div class="callout warn">A documentação também exige opt-in do usuário para receber mensagens da empresa. A janela de 24h não substitui consentimento.</div>
+</section>
+
+<section class="section" id="templates">
+  <div class="section-head"><div class="step">08</div><div><h2>Templates: mensagens aprovadas para fora da janela</h2><div class="sub">Templates são ativos da WABA e passam por revisão. Categorias atuais: <b>authentication</b>, <b>marketing</b> e <b>utility</b>.</div></div></div>
+  <div class="grid3">
+    <div class="card"><h3>Nome</h3><p>Até 512 caracteres; minúsculas, números e underscore. O mesmo nome pode existir em idiomas diferentes.</p></div>
+    <div class="card"><h3>Variáveis</h3><p>Podem ser nomeadas, como <kbd>{{first_name}}</kbd>, ou posicionais, como <kbd>{{1}}</kbd>.</p></div>
+    <div class="card"><h3>Status</h3><p>Só templates <b>APPROVED</b> podem ser enviados. Mudanças chegam por <kbd>message_template_status_update</kbd>.</p></div>
+  </div>
+  <div class="code"><div class="code-head"><span>Exemplo conceitual — envio de template aprovado</span><button class="copy">COPIAR</button></div><pre>curl "https://graph.facebook.com/${GRAPH_API_VERSION}/${WHATSAPP_PHONE_NUMBER_ID}/messages" \
+  -H "Authorization: Bearer ${WHATSAPP_ACCESS_TOKEN}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "messaging_product": "whatsapp",
+    "to": "+55SEUNUMERO",
+    "type": "template",
+    "template": {
+      "name": "seu_template_aprovado",
+      "language": { "code": "pt_BR" }
+    }
+  }'</pre></div>
+  <details><summary>Limites e qualidade que valem conhecer</summary><p>A documentação consultada informa até 100 criações de template por hora. WABAs de portfolio não verificado têm limite menor de templates, enquanto portfolios verificados podem ter capacidade maior sob condições. Qualidade baixa pode levar a pausa ou desativação.</p></details>
+</section>
+
+<section class="section" id="numero">
+  <div class="section-head"><div class="step">09</div><div><h2>Levar um número real para produção</h2><div class="sub">Adicionar/verificar o número na conta não é o mesmo que registrá-lo para uso pela Cloud API. A documentação separa essas etapas.</div></div></div>
+  <div class="grid2">
+    <div class="card"><h3>Requisitos importantes</h3><ul><li>Número válido capaz de receber verificação</li><li>Status <b>connected</b> para enviar/receber pela API</li><li>Display name</li><li>PIN de verificação em duas etapas obrigatório no registro</li></ul></div>
+    <div class="card"><h3>Teste → produção</h3><p>O Get Started gera um número de teste automaticamente. Para o número comercial, use App Dashboard / Business Suite / WhatsApp Manager e complete o registro Cloud API conforme a documentação do seu fluxo.</p></div>
+  </div>
+  <div class="callout">Em portfolios novos, a documentação atual informa um limite inicial de números registrados; a capacidade pode aumentar conforme verificação e uso.</div>
+</section>
+
+<section class="section" id="deploy">
+  <div class="section-head"><div class="step">10</div><div><h2>Checklist de produção</h2><div class="sub">Use esta lista como gate antes de conectar CRM, IA ou automações.</div></div></div>
+  <div class="grid2">
+    <div class="checks">
+      <label class="check"><input type="checkbox"><span>App Meta e WABA corretos</span></label>
+      <label class="check"><input type="checkbox"><span>Phone Number ID salvo</span></label>
+      <label class="check"><input type="checkbox"><span>System User token fora do código-fonte</span></label>
+      <label class="check"><input type="checkbox"><span>Permissões necessárias concedidas</span></label>
+      <label class="check"><input type="checkbox"><span>Webhook HTTPS validado e campo messages assinado</span></label>
+    </div>
+    <div class="checks">
+      <label class="check"><input type="checkbox"><span>Assinatura dos POSTs verificada com App Secret</span></label>
+      <label class="check"><input type="checkbox"><span>IDs de mensagem e status persistidos</span></label>
+      <label class="check"><input type="checkbox"><span>Opt-in do usuário documentado</span></label>
+      <label class="check"><input type="checkbox"><span>Templates necessários aprovados</span></label>
+      <label class="check"><input type="checkbox"><span>Logs sem tokens/segredos</span></label>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="avancado">
+  <div class="section-head"><div class="step">+</div><div><h2>Avançado: Embedded Signup e coexistência</h2><div class="sub">Para produtos SaaS/Tech Providers que conectam contas de terceiros, o Embedded Signup automatiza onboarding de WABAs e números.</div></div></div>
+  <div class="callout danger"><b>Atenção de versão:</b> a página oficial consultada, atualizada em 26/06/2026, avisa que Embedded Signup v2 e v3 serão descontinuados em <b>15/10/2026</b>. Integrações novas devem considerar o caminho v4.</div>
+  <div class="grid2" style="margin-top:14px">
+    <div class="card"><h3>Coexistência Business App + Cloud API</h3><p>A Meta documenta um fluxo em que o mesmo número pode continuar no WhatsApp Business app e também usar Cloud API, com histórico sincronizado em cenários suportados.</p></div>
+    <div class="card"><h3>Restrições específicas</h3><p>No fluxo de coexistência documentado, há throughput fixo de 20 mps e uma janela operacional para sincronização após onboarding. Trate isso como arquitetura avançada, não como requisito do primeiro MVP.</p></div>
+  </div>
+</section>
+
+<section class="section" id="debug">
+  <div class="section-head"><div class="step">!</div><div><h2>Debug rápido</h2><div class="sub">Os erros mais comuns parecem “API quebrada”, mas normalmente são estado, janela, token ou webhook.</div></div></div>
+  <details open><summary>Recebi HTTP 200, mas a mensagem não chegou</summary><p>200/aceite da API não prova entrega. Procure o <b>messages webhook</b> de status e o WhatsApp Message ID.</p></details>
+  <details><summary>Texto funciona às vezes e às vezes falha</summary><p>Cheque se a customer service window de 24h ainda está aberta. Fora dela, use template aprovado.</p></details>
+  <details><summary>Webhook não recebe nada</summary><p>Confirme Callback URL pública HTTPS, Verify Token, assinatura do campo <b>messages</b> e logs do servidor. No test webhook oficial, a Meta orienta usar o botão Test no painel.</p></details>
+  <details><summary>Template não envia</summary><p>Verifique status <b>APPROVED</b>, idioma, nome exato, parâmetros e qualidade. Templates pausados/desativados não podem ser enviados.</p></details>
+  <details><summary>Número adicionado mas API não envia</summary><p>Verifique se o número foi realmente registrado para Cloud API e se o status está <b>connected</b>.</p></details>
+</section>
+
+<section class="section" id="fontes">
+  <div class="section-head"><div class="step">↗</div><div><h2>Fontes oficiais consultadas</h2><div class="sub">Estas páginas foram navegadas pelo MESTRE · WORKSPACE e usadas como fonte deste tutorial.</div></div></div>
+  <div class="grid2">
+    <a class="source" target="_blank" href="https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started"><div>📘</div><div><b>WhatsApp Cloud API Get Started</b><small>Atualizado: 16/06/2026</small></div></a>
+    <a class="source" target="_blank" href="https://developers.facebook.com/documentation/business-messaging/whatsapp/overview"><div>📘</div><div><b>WhatsApp Business Platform Overview</b><small>Meta for Developers</small></div></a>
+    <a class="source" target="_blank" href="https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages"><div>📨</div><div><b>Service messages</b><small>Atualizado: 21/05/2026</small></div></a>
+    <a class="source" target="_blank" href="https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/overview"><div>🧩</div><div><b>Template fundamentals</b><small>Atualizado: 21/05/2026</small></div></a>
+    <a class="source" target="_blank" href="https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/phone-numbers"><div>☎️</div><div><b>Business phone numbers</b><small>Atualizado: 21/05/2026</small></div></a>
+    <a class="source" target="_blank" href="https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/set-up-whatsapp-echo-bot"><div>🪝</div><div><b>Create a test webhook endpoint</b><small>Atualizado: 21/05/2026</small></div></a>
+    <a class="source" target="_blank" href="https://developers.facebook.com/docs/graph-api/webhooks/getting-started"><div>🔏</div><div><b>Webhooks from Meta</b><small>Verificação, payloads e assinatura</small></div></a>
+    <a class="source" target="_blank" href="https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users"><div>⚙️</div><div><b>Embedded Signup</b><small>Atualizado: 26/06/2026</small></div></a>
+  </div>
+</section>
+</div>
+<div class="footer">MCF Academy · Tutorial visual gerado para LEANDRO · Fonte primária: Meta for Developers · 21/09/2026</div>
+</main>
+</div>
+
+<script>
+const checks=[...document.querySelectorAll('.check input')];
+const key='mcf-whatsapp-tutorial-progress-v1';
+function save(){localStorage.setItem(key,JSON.stringify(checks.map(x=>x.checked)));updateProgress()}
+function updateProgress(){const done=checks.filter(x=>x.checked).length;document.querySelector('#progressBar').style.width=(done/checks.length*100)+'%'}
+try{const a=JSON.parse(localStorage.getItem(key)||'[]');checks.forEach((x,i)=>x.checked=!!a[i])}catch{}
+checks.forEach(x=>x.addEventListener('change',save));updateProgress();
+document.querySelectorAll('.copy').forEach(btn=>btn.addEventListener('click',async()=>{
+ const pre=btn.closest('.code').querySelector('pre').innerText;
+ try{await navigator.clipboard.writeText(pre);btn.textContent='COPIADO ✓';setTimeout(()=>btn.textContent='COPIAR',1200)}catch{btn.textContent='SELECIONE O CÓDIGO'}
+}));
+const sections=[...document.querySelectorAll('.section')], links=[...document.querySelectorAll('.nav a')];
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

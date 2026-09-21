@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "overview",
+    "requested_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/overview",
+    "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/overview",
+    "title": "WhatsApp Business Platform | Developer Documentation"
+  },
+  {
+    "slug": "messages",
+    "requested_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
+    "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
+    "title": "Service messages | Developer Documentation"
+  },
+  {
+    "slug": "templates",
+    "requested_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/overview",
+    "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/overview",
+    "title": "Template fundamentals | Developer Documentation"
+  },
+  {
+    "slug": "phone-numbers",
+    "requested_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/phone-numbers",
+    "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/phone-numbers",
+    "title": "Business phone numbers | Developer Documentation"
+  },
+  {
+    "slug": "webhook-test",
+    "requested_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/set-up-whatsapp-echo-bot",
+    "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/set-up-whatsapp-echo-bot",
+    "title": "Create a test webhook endpoint | Developer Documentation"
+  },
+  {
+    "slug": "webhook-server",
+    "requested_url": "https://developers.facebook.com/docs/graph-api/webhooks/getting-started",
+    "url": "https://developers.facebook.com/docs/graph-api/webhooks/getting-started",
+    "title": "Getting Started - Webhooks from Meta"
+  },
+  {
+    "slug": "embedded-signup",
+    "requested_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users",
+    "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users",
+    "title": "Onboard WhatsApp Business app users | Developer Documentation"
+  }
+]
