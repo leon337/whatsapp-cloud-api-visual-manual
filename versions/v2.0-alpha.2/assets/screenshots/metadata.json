@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "get-started",
+    "requested_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started",
+    "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/get-started",
+    "title": "WhatsApp Cloud API Get Started | Developer Documentation",
+    "captured_at": "2026-09-21T23:20:02.246298+00:00",
+    "file": "assets/screenshots/get-started.png"
+  },
+  {
+    "slug": "messages",
+    "requested_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
+    "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/send-messages",
+    "title": "Service messages | Developer Documentation",
+    "captured_at": "2026-09-21T23:20:07.933808+00:00",
+    "file": "assets/screenshots/messages.png"
+  },
+  {
+    "slug": "templates",
+    "requested_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/overview",
+    "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/overview",
+    "title": "Template fundamentals | Developer Documentation",
+    "captured_at": "2026-09-21T23:20:13.102167+00:00",
+    "file": "assets/screenshots/templates.png"
+  },
+  {
+    "slug": "phone-numbers",
+    "requested_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/phone-numbers",
+    "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/business-phone-numbers/phone-numbers",
+    "title": "Business phone numbers | Developer Documentation",
+    "captured_at": "2026-09-21T23:20:18.774159+00:00",
+    "file": "assets/screenshots/phone-numbers.png"
+  },
+  {
+    "slug": "webhook",
+    "requested_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/set-up-whatsapp-echo-bot",
+    "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/webhooks/set-up-whatsapp-echo-bot",
+    "title": "Create a test webhook endpoint | Developer Documentation",
+    "captured_at": "2026-09-21T23:20:23.842275+00:00",
+    "file": "assets/screenshots/webhook.png"
+  },
+  {
+    "slug": "embedded-signup",
+    "requested_url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users",
+    "url": "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users",
+    "title": "Onboard WhatsApp Business app users | Developer Documentation",
+    "captured_at": "2026-09-21T23:20:30.310325+00:00",
+    "file": "assets/screenshots/embedded-signup.png"
+  }
+]
